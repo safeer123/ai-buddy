@@ -6,6 +6,7 @@ from vector_store import load_vector_store
 from gemini_helper import ask_gemini
 
 import os
+import json
 
 load_dotenv()
 slack_client = WebClient(token=os.getenv("SLACK_BOT_TOKEN"))
