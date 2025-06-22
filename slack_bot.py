@@ -28,6 +28,14 @@ async def handle_slack_event(req: Request):
     print("🟢 Slack Event:", event)
 
     if event.get("type") == "app_mention" or event.get("channel_type") == "im":
+        user_id = event.get("user")
+        bot_user_id = payload.get("authorizations", [{}])[0].get("user_id")
+
+        # ✅ Prevent infinite loop
+        if user_id == bot_user_id:
+            print("⛔ Ignoring bot's own message to avoid loop")
+            return {"ok": True}
+
         text = event.get("text", "")
         user_question = text.split(">", 1)[-1].strip()
         channel = event.get("channel")
