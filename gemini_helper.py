@@ -16,7 +16,7 @@ with open(STATIC_CONTEXT_FILE, "r", encoding="utf-8") as f:
 
 chat = model.start_chat(history=[
     {
-        "role": "system",
+        "role": "user",
         "parts": [f"You are an HR assistant bot. Use the following static company policy for answering any HR-related questions:\n\n{STATIC_CONTEXT}"]
     }
 ])
