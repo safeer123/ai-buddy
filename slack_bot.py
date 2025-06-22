@@ -2,7 +2,6 @@ from slack_sdk import WebClient
 from slack_sdk.signature import SignatureVerifier
 from dotenv import load_dotenv
 from fastapi import Request, HTTPException
-from vector_store import load_vector_store
 from gemini_helper import ask_gemini
 
 import os
@@ -11,9 +10,6 @@ import json
 load_dotenv()
 slack_client = WebClient(token=os.getenv("SLACK_BOT_TOKEN"))
 verifier = SignatureVerifier(os.getenv("SLACK_SIGNING_SECRET"))
-
-vectorstore = load_vector_store()
-retriever = vectorstore.as_retriever()
 
 async def handle_slack_event(req: Request):
     body = await req.body()
@@ -39,8 +35,11 @@ async def handle_slack_event(req: Request):
         # Print to confirm message content
         print("📨 User Question:", user_question)
 
-        docs = retriever.get_relevant_documents(user_question)
-        context = "\n\n".join([doc.page_content for doc in docs[:3]])
+        context = """New Year's. Day	1 Jan 2025	Fixed Holiday	
+        Holi	14 Mar 2025	Fixed Holiday	Friday
+        Ramzan Id/Eid-ul-Fitar	31 Mar 2025	Fixed Holiday	Monday
+        Baisakhi	14 Apr 2025	Fixed Holiday	Monday
+        May Day (Labour Day)	1 May 2025	Fixed Holiday	Thursday"""
         print("📚 Context Sent to Gemini:", context)
 
         answer = ask_gemini(context, user_question)
