@@ -31,6 +31,9 @@ async def handle_slack_event(req: Request):
         user_id = event.get("user")
         bot_user_id = payload.get("authorizations", [{}])[0].get("user_id")
 
+        print("🟢 User ID:", user_id)
+        print("🟢 Bot User ID:", bot_user_id)
+
         # ✅ Prevent infinite loop
         if user_id == bot_user_id:
             print("⛔ Ignoring bot's own message to avoid loop")
