@@ -27,7 +27,7 @@ async def handle_slack_event(req: Request):
     event = payload.get("event", {})
     print("🟢 Slack Event:", event)
 
-    if event.get("type") == "app_mention":
+    if event.get("type") == "app_mention" or event.get("channel_type") == "im":
         text = event.get("text", "")
         user_question = text.split(">", 1)[-1].strip()
         channel = event.get("channel")
