@@ -3,6 +3,7 @@ from slack_sdk.signature import SignatureVerifier
 from dotenv import load_dotenv
 from fastapi import Request, HTTPException
 from gemini_helper import ask_gemini
+from datetime import datetime
 
 import os
 import json
@@ -46,11 +47,13 @@ async def handle_slack_event(req: Request):
         # Print to confirm message content
         print("📨 User Question:", user_question)
 
-        context = """New Year's. Day	1 Jan 2025	Fixed Holiday	
-        Holi	14 Mar 2025	Fixed Holiday	Friday
-        Ramzan Id/Eid-ul-Fitar	31 Mar 2025	Fixed Holiday	Monday
-        Baisakhi	14 Apr 2025	Fixed Holiday	Monday
-        May Day (Labour Day)	1 May 2025	Fixed Holiday	Thursday"""
+        now = datetime.now()
+        formattedTime = now.strftime("%Y-%m-%d %H:%M:%S")
+
+        context = f"""
+        Today: {formattedTime}
+        use this to see upcoming holidays/events
+        """
         print("📚 Context Sent to Gemini:", context)
 
         answer = ask_gemini(context, user_question)
