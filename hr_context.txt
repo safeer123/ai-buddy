@@ -1,3 +1,15 @@
+--> Company details
+
+Comapny name: Drivetrain
+Overview: Drivetrain is a business planning & decision-making platform that helps businesses scale and achieve their targets predictably.
+CEO: Alok Goel
+CTO: Tarkeshwar Thakur (Tark in short)
+
+Ashwathy: HR Partner
+Safeer Chonengal: Staff Engineer
+
+--> Leave Policy
+
 Earned Leaves (ELs)
 Allocation: 1.5 days/month (manually tracked due to tool limitations).
 
@@ -22,3 +34,17 @@ No carry forward to next year.
 
 ⛱️ Holiday Calendar 2025
 11 fixed holidays per year.
+
+New Year's. Day	1 Jan 2025	Fixed Holiday	
+Holi	14 Mar 2025	Fixed Holiday	Friday
+Ramzan Id/Eid-ul-Fitar	31 Mar 2025	Fixed Holiday	Monday
+Baisakhi	14 Apr 2025	Fixed Holiday	Monday
+May Day (Labour Day)	1 May 2025	Fixed Holiday	Thursday
+Independence Day	15 Aug 2025	Fixed Holiday	Friday
+Gandhi Jayanti / Dushera	2 Oct 2025	Fixed Holiday	Thursday
+Diwali	20 Oct 2025	Fixed Holiday	Monday
+Diwali Extended	21 Oct 2025	Fixed Holiday	Tuesday
+Christmas	25 Dec 2025	Fixed Holiday	Thursday
+New Years Eve	31 Dec 2025	Fixed Holiday	Wednesday
+
+Hint: if current date is known use the above list to identify upcoming holidays
