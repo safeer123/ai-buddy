@@ -1,23 +1,24 @@
 import google.generativeai as genai
 from dotenv import load_dotenv
+from github_helper import fetch_file_from_github
 import os
 
 load_dotenv()
+
+github_url = os.getenv("GITHUB_HR_POLICY_FILE")
 
 # Configure Gemini with API key
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Initialize model
 model = genai.GenerativeModel("gemini-2.5-flash")
-# Load static HR policy once at startup
-STATIC_CONTEXT_FILE = "hr_context.txt"
-with open(STATIC_CONTEXT_FILE, "r", encoding="utf-8") as f:
-    STATIC_CONTEXT = f.read()
+
+static_context = fetch_file_from_github(github_url)
 
 chat = model.start_chat(history=[
     {
         "role": "user",
-        "parts": [f"You are an HR assistant bot. Use the following static company policy for answering any HR-related questions:\n\n{STATIC_CONTEXT}"]
+        "parts": [f"You are an HR assistant bot. Use the following static company policy for answering any HR-related questions:\n\n{static_context}"]
     }
 ])
 
