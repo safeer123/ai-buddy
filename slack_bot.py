@@ -52,7 +52,7 @@ async def handle_slack_event(req: Request):
 
         context = f"""
         Today: {formattedTime}
-        use this to see upcoming holidays/events
+        In case of any questions, use this to see upcoming holidays/events
         """
         print("📚 Context Sent to Gemini:", context)
 
